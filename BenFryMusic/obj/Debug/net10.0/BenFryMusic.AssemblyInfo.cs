@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BenFryMusic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0ebab46e6e0732097f4c65df4a981feeb3ed15c")]
 [assembly: System.Reflection.AssemblyProductAttribute("BenFryMusic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BenFryMusic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

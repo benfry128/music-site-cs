@@ -30,12 +30,16 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Pages/Albums.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBbGJ1bXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Pages/DB.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEQi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Pages/Home.razor]
@@ -46,10 +50,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -57,15 +57,3 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-q3vdmz4s2p
-
-[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-revvvi520x
-
-[C:/Users/benfr/Desktop/repos/BenFryMusic/BenFryMusic/Components/Layout/ReconnectModal.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-cj2ny1krra
