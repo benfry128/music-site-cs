@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
+<PageTitle>BenFryMusic Reviews</PageTitle>
 <MudThemeProvider IsDarkMode="true" Theme="_darkTheme" />
 <MudPopoverProvider/>
 <MudDialogProvider/>
@@ -15,9 +16,12 @@
         <MudButton Variant="Variant.Text" Color="Color.Primary" Href="/db">DATABASE</MudButton>
     </MudToolBar>
     
-    <MudMainContent
-        Class="justify-content-center">
-        @Body
+    <MudMainContent>
+        <MudStack
+            AlignItems="AlignItems.Center"
+        >
+            @Body
+        </MudStack>
     </MudMainContent>
 </MudLayout>
 
