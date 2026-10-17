@@ -1,1 +1,19 @@
 ﻿@page "/albums"
+@using BenFryMusic.Components.IndividualComponents
+@inject IDialogService DialogService
+
+<MudText Typo="Typo.h3">Albums</MudText>
+<MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@OpenDialogAsync">
+    Recommend an Album
+</MudButton>
+
+@code {
+
+    private Task OpenDialogAsync()
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+        
+        return DialogService.ShowAsync<RecommendDialog>("amorg", options);
+    }
+
+}
