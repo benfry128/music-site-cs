@@ -1,5 +1,5 @@
 using BenFryMusic.Components;
-using BenFryMusic.Data;
+using BenFryMusic.Context;
 using BenFryMusic.Services;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
@@ -12,7 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("Default")
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddMudServices();
-builder.Services.AddDbContextFactory<AlbumDbContext>(options => 
+builder.Services.AddDbContextFactory<MyDbContext>(options => 
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddTransient<AlbumService>();
 
