@@ -22,7 +22,7 @@ public class AlbumService
         }
     }
 
-    public List<Album> GetCustomers()
+    public List<Album> GetAllAlbums()
     {
         using (var context = _dbContextFactory.CreateDbContext())
         {
