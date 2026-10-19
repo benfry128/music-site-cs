@@ -1,12 +1,20 @@
 using BenFryMusic.Components;
+using BenFryMusic.Data;
+using BenFryMusic.Services;
+using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("Default")
+    ?? throw new NullReferenceException("No connection string");
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddMudServices();
+builder.Services.AddDbContextFactory<AlbumDbContext>(options => 
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddTransient<AlbumService>();
 
 var app = builder.Build();
 
