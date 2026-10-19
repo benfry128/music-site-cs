@@ -1,32 +1,32 @@
-﻿using BenFryMusic.Data;
-using Microsoft.EntityFrameworkCore;
-using BenFryMusic.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using BenFryMusic.Entities;
+using BenFryMusic.Context;
 
 namespace BenFryMusic.Services;
 
 public class AlbumService
 {
-    private IDbContextFactory<AlbumDbContext> _dbContextFactory;
+    private IDbContextFactory<MyDbContext> _dbContextFactory;
 
-    public AlbumService(IDbContextFactory<AlbumDbContext> dbContextFactory)
+    public AlbumService(IDbContextFactory<MyDbContext> dbContextFactory)
     {
         _dbContextFactory = dbContextFactory;
     }
 
-    public void AddAlbum(Album2 album)
+    public void AddAlbum(Album album)
     {
         using (var context = _dbContextFactory.CreateDbContext())
         {
-            context.Albums2.Add(album);
+            context.Albums.Add(album);
             context.SaveChanges();
         }
     }
 
-    public List<Album2> GetCustomers()
+    public List<Album> GetCustomers()
     {
         using (var context = _dbContextFactory.CreateDbContext())
         {
-            var albums = context.Albums2.ToList();
+            var albums = context.Albums.ToList();
             return albums;
         }
     }

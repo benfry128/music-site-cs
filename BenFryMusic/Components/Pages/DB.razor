@@ -1,5 +1,5 @@
 ﻿@page "/db"
-@using BenFryMusic.Data.Models
+@using BenFryMusic.Entities
 @using BenFryMusic.Services
 @inject AlbumService albumService
 
@@ -10,10 +10,10 @@
     <Columns>
         <PropertyColumn Property="x => x.Title" />
         <PropertyColumn Property="x => x.Artist" />
-        <PropertyColumn Property="x => x.ReleaseDate" Title="Released"/>
+        <PropertyColumn Property="x => x.DateReleased" Title="Released"/>
         <PropertyColumn Property="x => x.Rating" />
-        <PropertyColumn Property="x => x.ListenedDate" Title="Listened"/>
-        <PropertyColumn Property="x => x.TopSong" Title="Top Song"/>
+        <PropertyColumn Property="x => x.DateListened" Title="Listened"/>
+        <PropertyColumn Property="x => x.FavoriteSong" Title="Top Song"/>
         <PropertyColumn Property="x => x.Ranking" />
         <PropertyColumn Property="x => x.QueuePosition" Title="Queue"/>
     </Columns>
@@ -25,26 +25,10 @@
 
 @code {
 
-    private List<Album2> albums = [];
+    private List<Album> albums = [];
 
     private void Append()
     {
-        Console.Write("HI");
-        // albumService.AddAlbum(new Album2()
-        // {
-        //     Title = "HELLO",
-        //     Artist = "JIT",
-        //     ReleaseDate = new DateOnly(2000, 1, 1),
-        //     ListenedDate = new DateOnly(2000, 1, 1),
-        //     Rating = 3,
-        //     Ranking = 4,
-        //     TopSong = "HI",
-        //     QueuePosition = 0,
-        //     ImageUrl = "asdf",
-        //     SpotifyId = "hello",
-        //     Url = "asdf",
-        // });
-
         albums = albumService.GetCustomers();
     }
 
