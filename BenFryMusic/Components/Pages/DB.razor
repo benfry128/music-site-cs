@@ -1,35 +1,74 @@
 ﻿@page "/db"
 @using BenFryMusic.Entities
 @using BenFryMusic.Services
-@inject AlbumService albumService
+@inject AlbumService AlbumService
 
 <MudText Typo="Typo.h3">Albums Database</MudText>
 <MudText Typo="Typo.body1">This is the full database of albums I've reviewed or plan to review in the future. Take a look!</MudText>
- 
-<MudDataGrid Items="@albums">
-    <Columns>
-        <PropertyColumn Property="x => x.Title" />
-        <PropertyColumn Property="x => x.Artist" />
-        <PropertyColumn Property="x => x.DateReleased" Title="Released"/>
-        <PropertyColumn Property="x => x.Rating" />
-        <PropertyColumn Property="x => x.DateListened" Title="Listened"/>
-        <PropertyColumn Property="x => x.FavoriteSong" Title="Top Song"/>
-        <PropertyColumn Property="x => x.Ranking" />
-        <PropertyColumn Property="x => x.QueuePosition" Title="Queue"/>
-    </Columns>
-</MudDataGrid>
 
-<MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@Append">
+@if (_albums.Count == 0)
+{
+    <MudProgressCircular Indeterminate="true"></MudProgressCircular>
+}
+else
+{
+    <MudDataGrid 
+        @ref="MyDataGrid"
+        Items="@_albums"
+    >
+        <Columns>
+            <PropertyColumn Property="x => x.Title" />
+            <PropertyColumn Property="x => x.Artist" />
+            <PropertyColumn Property="x => x.DateReleased" Title="Released"/>
+            <PropertyColumn Property="x => x.Rating" Comparer="@(new CompareNull{ThisDataGrid = MyDataGrid})"/>
+            <PropertyColumn Property="x => x.DateListened" Title="Listened" Comparer="@(new CompareNull{ThisDataGrid = MyDataGrid})"/>
+            <PropertyColumn Property="x => x.FavoriteSong" Title="Top Song" Comparer="@(new CompareNull{ThisDataGrid = MyDataGrid})"/>
+            <PropertyColumn Property="x => x.Ranking" Comparer="@(new CompareNull{ThisDataGrid = MyDataGrid})"/>
+            <PropertyColumn Property="x => x.QueuePosition" Title="Queue" Comparer="@(new CompareNull{ThisDataGrid = MyDataGrid})"/>
+        </Columns>
+    </MudDataGrid>
+}
+
+<MudButton Variant="Variant.Outlined" Color="Color.Primary">
     Review an Album
 </MudButton>
 
 @code {
+    private MudDataGrid<Album> MyDataGrid;
 
-    private List<Album> albums = [];
+    private List<Album> _albums = [];
 
-    private void Append()
+    protected override async Task OnInitializedAsync()
     {
-        albums = albumService.GetAllAlbums();
+        await Task.Delay(1);
+        _albums = AlbumService.GetAllAlbums();
+    }
+
+    public class CompareNull : Comparer<object?>
+    {
+        public MudDataGrid<Album> ThisDataGrid;
+        
+        public override int Compare(object? x, object? y)
+        {
+            var desc = ThisDataGrid.SortDefinitions.Values.ToList()[0].Descending;
+            if (x is null || x.ToString() == "")
+            {
+                if (y is null || y.ToString() == "")
+                {
+                    return 0;
+                }
+                return desc ? -1 : 1;
+            }
+            if (y is null || y.ToString() == "")
+            {
+                return desc ? 1 : -1;
+            }
+            if (x is IComparable xComparable && y is IComparable)
+            {
+                return xComparable.CompareTo(y);
+            }
+            return string.Compare(x.ToString(), y.ToString(), StringComparison.Ordinal);
+        }
     }
 
 }
