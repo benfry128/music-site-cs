@@ -16,7 +16,15 @@ else
         @ref="MyDataGrid"
         Items="@_albums"
         Style="background-color:#181818;width:1200px"
+        SortMode="SortMode.Single"
+        Filterable="true"
+        FilterMode="DataGridFilterMode.Simple"
+        ShowColumnOptions="false"
+        QuickFilter="@QuickFilter"
     >
+        <ToolBarContent>
+            <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search"></MudTextField>
+        </ToolBarContent>
         <ColGroup>
             <col style="width: 25%;"/>
             <col style="width: 20%;"/>
@@ -27,12 +35,12 @@ else
             <col style="width: 5%;"/>
         </ColGroup>
         <Columns>
-            <PropertyColumn Property="x => x.Title" CellStyle="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0px;"/>
-            <PropertyColumn Property="x => x.Artist" CellStyle="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0px;"/>
+            <PropertyColumn Property="x => x.Title" Filterable="false" CellStyle="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0px;"/>
+            <PropertyColumn Property="x => x.Artist" Filterable="false" CellStyle="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0px;"/>
             <PropertyColumn Property="x => x.DateReleased" Title="Released"/>
-            <PropertyColumn Property="x => x.Rating" Comparer="@(new CompareNull { ThisDataGrid = MyDataGrid })" CellStyle="max-width: 0px"/>
+            <PropertyColumn Property="x => x.Rating" Comparer="@(new CompareNull { ThisDataGrid = MyDataGrid })" Sortable="false"/>
             <PropertyColumn Property="x => x.DateListened" Title="Listened" Comparer="@(new CompareNull { ThisDataGrid = MyDataGrid })"/>
-            <PropertyColumn Property="x => x.FavoriteSong" Title="Top Song" Comparer="@(new CompareNull { ThisDataGrid = MyDataGrid })" CellStyle="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0px;"/>
+            <PropertyColumn Property="x => x.FavoriteSong" Filterable="false" Title="Top Song" Comparer="@(new CompareNull { ThisDataGrid = MyDataGrid })" CellStyle="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0px;"/>
             <PropertyColumn Property="x => x.Ranking" Comparer="@(new CompareNull { ThisDataGrid = MyDataGrid })"/>
         </Columns>
         <PagerContent>
@@ -49,6 +57,13 @@ else
     private MudDataGrid<Album> MyDataGrid;
 
     private List<Album> _albums = [];
+    private string _searchString = "";
+
+    private Func<Album, bool> QuickFilter => x => 
+        string.IsNullOrWhiteSpace(_searchString) || 
+        _searchString.ToLower().Split(" ").All(w => x.Title.ToLower().Contains(w) 
+                                                    || x.Artist.ToLower().Contains(w) 
+                                                    || (x.FavoriteSong?.ToLower().Contains(w) ?? false));
 
     protected override async Task OnInitializedAsync()
     {
