@@ -16,7 +16,7 @@ public class Album
 
     public DateOnly? DateListened { get; set; }
 
-    public string FavoriteSong { get; set; } = null!;
+    public string? FavoriteSong { get; set; }
 
     public int? Ranking { get; set; }
 
