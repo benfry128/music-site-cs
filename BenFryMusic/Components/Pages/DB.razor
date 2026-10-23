@@ -23,6 +23,7 @@ else
         QuickFilter="@QuickFilter"
     >
         <ToolBarContent>
+            <MudSpacer/><MudSpacer/>
             <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search"></MudTextField>
         </ToolBarContent>
         <ColGroup>
@@ -49,9 +50,9 @@ else
     </MudDataGrid>
 }
 
-<MudButton Variant="Variant.Outlined" Color="Color.Primary">
-    Review an Album
-</MudButton>
+@* <MudButton Variant="Variant.Outlined" Color="Color.Primary"> *@
+@*     Review an Album *@
+@* </MudButton> *@
 
 @code {
     private MudDataGrid<Album> MyDataGrid;
