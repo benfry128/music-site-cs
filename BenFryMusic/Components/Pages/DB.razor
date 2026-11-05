@@ -60,10 +60,10 @@ else
     private List<Album> _albums = [];
     private string _searchString = "";
 
-    private Func<Album, bool> QuickFilter => x => 
-        string.IsNullOrWhiteSpace(_searchString) || 
-        _searchString.ToLower().Split(" ").All(w => x.Title.ToLower().Contains(w) 
-                                                    || x.Artist.ToLower().Contains(w) 
+    private Func<Album, bool> QuickFilter => x =>
+        string.IsNullOrWhiteSpace(_searchString) ||
+        _searchString.ToLower().Split(" ").All(w => x.Title.ToLower().Contains(w)
+                                                    || x.Artist.ToLower().Contains(w)
                                                     || (x.FavoriteSong?.ToLower().Contains(w) ?? false));
 
     protected override async Task OnInitializedAsync()
@@ -75,7 +75,7 @@ else
     public class CompareNull : Comparer<object?>
     {
         public MudDataGrid<Album> ThisDataGrid;
-        
+
         public override int Compare(object? x, object? y)
         {
             var desc = ThisDataGrid.SortDefinitions.Values.ToList()[0].Descending;
@@ -98,5 +98,4 @@ else
             return string.Compare(x.ToString(), y.ToString(), StringComparison.Ordinal);
         }
     }
-
 }
