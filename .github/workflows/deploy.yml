@@ -43,4 +43,4 @@ jobs:
           
       - name: Start Lightsail deployment
         run: |
-          aws lightsail create-container-service-deployment --region us-east-1 --service-name benfrymusic --containers '{ \"benfrymusic\": {\"image\": \":benfrymusic.benfrymusic.latest\", \"ports\": {\"8080\": \"HTTP\"}}}' --public-endpoint '{ \"containerName\": \"benfrymusic\", \"containerPort\": 8080, \"healthCheck\": { \"path\": \"/health\", \"intervalSeconds\": 5 }}'
+          aws lightsail create-container-service-deployment --region us-east-1 --service-name benfrymusic --containers '{ "benfrymusic": {"image": ":benfrymusic.benfrymusic.latest", "ports": {"8080": "HTTP"}}}' --public-endpoint '{ "containerName": "benfrymusic", "containerPort": 8080, "healthCheck": { "path": "/health", "intervalSeconds": 5 }}'
