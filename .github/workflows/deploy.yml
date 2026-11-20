@@ -35,7 +35,7 @@ jobs:
       
       - name: Build
         run: |
-          docker build -t benfrymusic -f .
+          docker build -t benfrymusic -f BenFryMusic\dockerfile .
       
       - name: Push to lightsail
         run: |
