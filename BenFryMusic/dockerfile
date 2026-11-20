@@ -1,12 +1,14 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
-EXPOSE 5094
+EXPOSE 8080
+EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY ["BenFryMusic.csproj", "."]
-RUN dotnet restore "BenFryMusic.csproj"
+COPY ["BenFryMusic/BenFryMusic.csproj", "BenFryMusic/"]
+RUN dotnet restore "BenFryMusic/BenFryMusic.csproj"
 COPY . .
+WORKDIR "/src/BenFryMusic"
 RUN dotnet build "BenFryMusic.csproj" -c Release -o /app/build
 
 FROM build AS publish
